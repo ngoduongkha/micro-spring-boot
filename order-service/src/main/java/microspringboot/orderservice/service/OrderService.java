@@ -1,12 +1,7 @@
 package microspringboot.orderservice.service;
 
-import microspringboot.orderservice.aggregate.order.Order;
-import org.springframework.lang.NonNull;
-
-import java.util.List;
-
+import microspringboot.orderservice.dto.OrderRequest;
 
 public interface OrderService {
-    @NonNull
-    List<Order> findAll();
+    String placeOrder(OrderRequest orderRequest);
 }

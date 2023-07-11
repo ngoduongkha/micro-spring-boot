@@ -1,15 +1,13 @@
 package microspringboot.productservice.controller;
 
-import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import microspringboot.productservice.aggregate.product.Product;
-import microspringboot.productservice.dto.CreateProductDto;
-import microspringboot.productservice.service.ProductService;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+
+import lombok.RequiredArgsConstructor;
+import microspringboot.productservice.dto.ProductRequest;
+import microspringboot.productservice.dto.ProductResponse;
+import microspringboot.productservice.service.ProductService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/products")
@@ -17,18 +15,16 @@ import java.util.UUID;
 public class ProductController {
     private final ProductService productService;
 
-//    @GetMapping("{category}")
-//    public List<Product> getProductsByCategory(@PathVariable("category") String category) {
-//        return productService.findAllByCategory(category);
-//    }
-
-    @GetMapping("{id}")
-    public Optional<Product> getProductById(@PathVariable("id") UUID id) {
-        return productService.findById(id);
-    }
-
     @PostMapping
-    public Product createProduct(@RequestBody @Valid CreateProductDto product) {
-        return productService.save(product);
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createProduct(@RequestBody ProductRequest productRequest) {
+        productService.createProduct(productRequest);
     }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<ProductResponse> getAllProducts() {
+        return productService.getAllProducts();
+    }
+
 }

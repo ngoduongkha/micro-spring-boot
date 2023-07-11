@@ -14,4 +14,10 @@ plugins {
 
 rootProject.name = 'micro-spring-boot'
 
-include('shared-kernel', 'order-service', 'product-service')
+include('shared-kernel')
+include('infrastructure')
+include('api-gateway')
+include('discovery-server')
+include('order-service')
+include('product-service')
+include('inventory-service')

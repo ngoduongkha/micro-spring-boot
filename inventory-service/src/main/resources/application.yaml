@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    url: jdbc:postgresql://localhost:5432/inventory-service
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  actuator:
+    enabled: true
+
+
+server:
+  port: 10610

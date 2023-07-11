@@ -1,7 +1,7 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
   datasource:
     url: jdbc:postgresql://localhost:5432/order-service
     username: postgres

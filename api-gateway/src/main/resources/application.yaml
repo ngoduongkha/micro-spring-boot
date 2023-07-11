@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes[0]:
+        id: product-service
+        uri: lb://product-service
+        predicates[0]: Path=/api/product
+      routes[1]:
+        id: order-service
+        uri: lb://order-service
+        predicates[0]: Path=/api/order
+      routes[2]:
+        id: discovery-server
+        uri: http://eureka:password@${app.eureka-server}:8761
+        predicates[0]: Path=/eureka/web
+        filters[0]: SetPath=/
+      routes[3]:
+        id: discovery-server-static
+        uri: http://eureka:password@${app.eureka-server}:8761
+        predicates[0]: Path=/eureka/**
+server:
+  port: 8181
+management:
+  endpoint:
+    web:
+      exposure:
+        include: prometheus

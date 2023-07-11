@@ -1,27 +1,24 @@
 package microspringboot.productservice.aggregate.product;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import microspringboot.sharedkernel.domain.AggregateRoot;
-import microspringboot.sharedkernel.domain.ConstructorUsedByJPAOnly;
 
 @Entity
-@Table(name = "products")
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 public class Product extends AggregateRoot<Product> {
+    @Column(nullable = false, columnDefinition = "varchar(50)")
     private String name;
-    private double price;
-    private String color;
-    private String category;
 
-    @ConstructorUsedByJPAOnly
-    public Product() { }
+    @Column(columnDefinition = "text")
+    private String description;
+
+    @Column(nullable = false, columnDefinition = "double precision")
+    private Double price;
 }
