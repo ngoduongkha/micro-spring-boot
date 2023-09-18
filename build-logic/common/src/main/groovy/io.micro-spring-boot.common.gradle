@@ -1,0 +1,20 @@
+plugins {
+    id("java")
+}
+
+group = "io.micro-spring-boot"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+dependencies {
+    implementation(platform("io.micro-spring-boot.platforms:product-platform"))
+
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok:1.18.20")
+}

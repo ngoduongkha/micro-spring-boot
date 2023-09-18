@@ -1,0 +1,4 @@
+plugins {
+    id("io.micro-spring-boot.common")
+    id("java-library")
+}

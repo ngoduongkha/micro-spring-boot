@@ -1,0 +1,2 @@
+include("plugins-platform")
+include("product-platform")

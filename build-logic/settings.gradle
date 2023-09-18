@@ -1,0 +1,13 @@
+dependencyResolutionManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+    }
+}
+includeBuild("../platforms")
+
+include("common")
+include("java-library")
+include("spring-boot-application")
+include("spring-boot-domain")
+include("spring-boot-infra")

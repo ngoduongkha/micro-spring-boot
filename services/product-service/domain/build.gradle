@@ -1,0 +1,9 @@
+plugins {
+    id("io.micro-spring-boot.spring-boot-domain")
+}
+
+group = "${group}.product-service"
+
+dependencies {
+    implementation("io.micro-spring-boot.building-blocks:jpa")
+}

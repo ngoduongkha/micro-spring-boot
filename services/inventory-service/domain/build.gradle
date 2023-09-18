@@ -1,0 +1,5 @@
+plugins {
+    id("io.micro-spring-boot.spring-boot-domain")
+}
+
+group = "${group}.inventory-service"

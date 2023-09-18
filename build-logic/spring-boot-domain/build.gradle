@@ -1,0 +1,10 @@
+plugins {
+    id("groovy-gradle-plugin")// <1>
+}
+
+dependencies {
+    implementation(platform("io.micro-spring-boot.platforms:plugins-platform")) // <2>
+    implementation(project(":common")) // <3>
+    implementation("org.springframework.boot:org.springframework.boot.gradle.plugin") // <4>
+    implementation("io.spring.gradle:dependency-management-plugin") // <5>
+}
