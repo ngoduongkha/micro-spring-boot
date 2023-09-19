@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 )
 @EntityScan(
     value = {
-        "io.micro_spring_boot.product_service.domain.aggregate",
+        "io.micro_spring_boot.product_service.domain.aggregates",
     }
 )
 @EnableJpaAuditing

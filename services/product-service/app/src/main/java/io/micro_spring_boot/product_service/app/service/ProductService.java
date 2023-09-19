@@ -1,15 +1,14 @@
 package io.micro_spring_boot.product_service.app.service;
 
-import io.micro_spring_boot.product_service.app.dto.ProductRequest;
-import io.micro_spring_boot.product_service.app.dto.ProductResponse;
-import org.springframework.lang.NonNull;
+import io.micro_spring_boot.product_service.app.dto.CreateProductRequest;
+import io.micro_spring_boot.product_service.app.dto.GetProductRequest;
+import io.micro_spring_boot.product_service.app.dto.GetProductResponse;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface ProductService {
-    void createProduct(ProductRequest productRequest);
-    List<ProductResponse> getAllProducts();
-    List<ProductResponse> getProductByIds(@NonNull List<UUID> ids);
-    ProductResponse getProductById(UUID id);
+    void createProduct(CreateProductRequest productRequest);
+    List<GetProductResponse> getAllProducts(GetProductRequest request);
+    GetProductResponse getProductById(UUID id);
 }

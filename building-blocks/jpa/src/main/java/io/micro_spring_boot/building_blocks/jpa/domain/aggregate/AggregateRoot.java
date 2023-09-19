@@ -30,7 +30,7 @@ public abstract class AggregateRoot<T extends AbstractAggregateRoot<T>> extends 
     @CreatedBy
     private UUID createdBy;
 
-    @Column(nullable = false, updatable = false)
+    @Column(updatable = false)
     @CreatedDate
     private LocalDateTime createdAt;
 

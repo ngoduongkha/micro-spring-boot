@@ -1,4 +1,4 @@
-package io.micro_spring_boot.product_service.domain.aggregate.product;
+package io.micro_spring_boot.product_service.domain.aggregates.product;
 
 import io.micro_spring_boot.building_blocks.jpa.domain.aggregate.AggregateRoot;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
@@ -11,6 +11,9 @@ import org.hibernate.annotations.Type;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public @Entity class Product extends AggregateRoot<Product> {
+    @Column(nullable = false, columnDefinition = "varchar(50)", unique = true)
+    private String skuCode;
+
     @Column(nullable = false, columnDefinition = "varchar(50)")
     private String name;
 

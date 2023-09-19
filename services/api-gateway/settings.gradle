@@ -14,8 +14,3 @@ dependencyResolutionManagement {
 }
 includeBuild("../../platforms")
 includeBuild("../../building-blocks")
-
-// == Define the inner structure of this component ==
-include("domain")
-include("infra")
-include("app")

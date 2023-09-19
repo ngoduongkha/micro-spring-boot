@@ -13,3 +13,6 @@ spring:
 server:
   port: 10500
 
+logging:
+  level:
+    web: DEBUG

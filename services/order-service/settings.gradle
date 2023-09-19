@@ -10,8 +10,6 @@ pluginManagement {
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
-        gradlePluginPortal()
-        google()
     }
 }
 includeBuild("../../platforms")
