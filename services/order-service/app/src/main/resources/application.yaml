@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: order-service
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        transaction.jta.platform: true
+        format_sql: true
+        show_sql: false
+        globally_quoted_identifiers: true
+        globally_quoted_identifiers_skip_column_definitions: true
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/order-service}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+server:
+  port: 10500
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:password@localhost:8761/eureka
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+  endpoint:
+    health:
+      show-details: always
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+#  #Resilinece4j Properties
+#  resilience4j.circuitbreaker.instances.inventory.registerHealthIndicator=true
+#  resilience4j.circuitbreaker.instances.inventory.event-consumer-buffer-size=10
+#  resilience4j.circuitbreaker.instances.inventory.slidingWindowType=COUNT_BASED
+#  resilience4j.circuitbreaker.instances.inventory.slidingWindowSize=5
+#  resilience4j.circuitbreaker.instances.inventory.failureRateThreshold=50
+#  resilience4j.circuitbreaker.instances.inventory.waitDurationInOpenState=5s
+#  resilience4j.circuitbreaker.instances.inventory.permittedNumberOfCallsInHalfOpenState=3
+#  resilience4j.circuitbreaker.instances.inventory.automaticTransitionFromOpenToHalfOpenEnabled=true
+#
+#  #Resilience4J Timeout Properties
+#  resilience4j.timelimiter.instances.inventory.timeout-duration=3s
+#
+#  #Resilience4J Retry Properties
+#  resilience4j.retry.instances.inventory.max-attempts=3
+#  resilience4j.retry.instances.inventory.wait-duration=5s
+#
+#  # Kafka Properties
+#  spring.kafka.bootstrap-servers=localhost:9092
+#  spring.kafka.template.default-topic=notificationTopic
+#  spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+#  spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer
+#  spring.kafka.producer.properties.spring.json.type.mapping=event:com.programmingtechie.orderservice.event.OrderPlacedEvent
